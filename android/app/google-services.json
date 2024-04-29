@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "690359803219",
+    "project_id": "firstfire-cfc45",
+    "storage_bucket": "firstfire-cfc45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690359803219:android:59146f545cb109982b15a6",
+        "android_client_info": {
+          "package_name": "com.example.fire_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUgTjBXD_1jIm17oDJ7PcNv-DAKqRxzW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
