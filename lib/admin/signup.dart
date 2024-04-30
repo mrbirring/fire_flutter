@@ -1,6 +1,6 @@
 import 'package:fire_flutter/admin/Login.dart';
 import 'package:fire_flutter/contoller/firebasecont.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -61,177 +61,190 @@ class _Signup_pageState extends State<Signup_page> {
           backgroundColor: Colors.black,
         ),
         body: SafeArea(
-          child: Form(
-            key: _key,
-            child: Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Spacer(),
-                  Center(
-                    child: Image.asset(
-                      "imgs/firelogo.png",
-                      width: 150,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 22.0),
-                    child: TextFormField(
-                      controller: fname_textcontoller,
-                      // validator: (value) {
-                      //   if (value == null || value.length < 8) {
-                      //     return "Enter some thing";
-                      //   }
-                      //   return null;
-                      // },
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: 'Enter FullName',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                          ),
-                        ),
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            child: Form(
+              key: _key,
+              child: Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Spacer(),
+                    Center(
+                      child: Image.asset(
+                        "imgs/firelogo.png",
+                        width: 150,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 22.0),
-                    child: TextFormField(
-                      controller: email_textcontoller,
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: 'Email Here...',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22.0),
+                      child: TextFormField(
+                        controller: fname_textcontoller,
+                        // validator: (value) {
+                        //   if (value == null || value.length < 8) {
+                        //     return "Enter some thing";
+                        //   }
+                        //   return null;
+                        // },
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: 'Enter FullName',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey,
+                            ),
                           ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 22.0),
-                    child: TextFormField(
-                      controller: Uname_textcontoller,
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: 'Enter UserName',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22.0),
+                      child: TextFormField(
+                        controller: email_textcontoller,
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: 'Email Here...',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey,
+                            ),
                           ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 22.0),
-                    child: TextFormField(
-                      controller: pass_textcontoller,
-                      onEditingComplete: () {},
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: 'PassWord Here...',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 22.0),
-                    child: TextFormField(
-                      controller: conf_pass_textcontoller,
-                      onEditingComplete: () {},
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: 'Confirm Password',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22.0),
+                      child: TextFormField(
+                        controller: Uname_textcontoller,
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: 'Enter UserName',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey,
+                            ),
                           ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 22.0),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 42,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          fb.createAccount(email_textcontoller.text,
-                              pass_textcontoller.text);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                        ),
-                        child: const Text(
-                          "Sign Up",
-                          style: TextStyle(
-                            color: Colors.white,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Divider(),
-                  Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "Already have account?",
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Loginpage()),
-                          );
-                        },
-                        child: const Text(
-                          "Login here",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22.0),
+                      child: TextFormField(
+                        controller: pass_textcontoller,
+                        onEditingComplete: () {},
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: 'PassWord Here...',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22.0),
+                      child: TextFormField(
+                        controller: conf_pass_textcontoller,
+                        onEditingComplete: () {},
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: 'Confirm Password',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22.0),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 42,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            FirebaseAuth.instance
+                                .createUserWithEmailAndPassword(
+                                    email: email_textcontoller.text,
+                                    password: pass_textcontoller.text)
+                                .then((value) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Loginpage()));
+                            }).onError((error, stackTrace) {
+                              print(error);
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black,
+                          ),
+                          child: const Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Divider(),
+                    Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Already have account?",
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Loginpage()),
+                            );
+                          },
+                          child: const Text(
+                            "Login here",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

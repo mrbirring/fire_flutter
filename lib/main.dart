@@ -1,5 +1,8 @@
+import 'package:fire_flutter/Home.dart';
 import 'package:fire_flutter/admin/Login.dart';
 import 'package:fire_flutter/firebase_options.dart';
+import 'package:fire_flutter/sacreen/first_head.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +24,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
-      home: Loginpage(),
+      home: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Loginpage(),
+      ),
     );
   }
 }
